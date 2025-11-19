@@ -49,22 +49,28 @@ Before you begin, ensure you have the following installed:
 ## Installation
 
 1. **Clone the repository**:
+
    ```bash
    git clone <your-repo-url>
    cd <project-directory>
    ```
 
 2. **Install dependencies**:
+
    ```bash
    npm install
    ```
 
 3. **Configure environment variables**:
+
    - Copy the `.env.example` file to `.env`:
+
      ```bash
      cp .env.example .env
      ```
+
    - Edit `.env` and add your Supabase credentials:
+
      ```env
      VITE_SUPABASE_URL=your_supabase_project_url
      VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
@@ -98,7 +104,7 @@ npm run preview
 
 ## Project Structure
 
-```
+```text
 src/
 ├── components/
 │   ├── Auth.tsx           # Login/Register component
@@ -146,7 +152,7 @@ src/
 
 - **Public Anon Key**: Used for client-side authentication (safe to expose)
 - **Row Level Security**: Implement RLS policies in Supabase for data protection
-- **Password Requirements**: Minimum 6 characters (enforced client-side)
+- **Password Requirements**: Minimum 8 characters (enforced client-side)
 - **HTTPS Only**: All communication with Supabase is encrypted
 - **Token Refresh**: Automatic session token refresh
 

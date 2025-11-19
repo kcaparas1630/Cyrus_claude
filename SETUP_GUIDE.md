@@ -4,7 +4,7 @@ This guide will help you get the Supabase authentication app running in minutes.
 
 ## Step 1: Create a Supabase Project
 
-1. Go to [https://supabase.com](https://supabase.com) and sign up/login
+1. Go to <https://supabase.com> and sign up/login
 2. Click "New Project"
 3. Choose your organization
 4. Enter project details:
@@ -25,11 +25,13 @@ This guide will help you get the Supabase authentication app running in minutes.
 ## Step 3: Configure Environment Variables
 
 1. In the project root, copy the example environment file:
+
    ```bash
    cp .env.example .env
    ```
 
 2. Open `.env` in your text editor and replace the placeholder values:
+
    ```env
    VITE_SUPABASE_URL=https://your-project.supabase.co
    VITE_SUPABASE_ANON_KEY=your_anon_key_here
@@ -97,6 +99,7 @@ Open your browser and go to `http://localhost:5173`
 ### Issue: "Invalid login credentials"
 
 **Solution**:
+
 - Make sure you're using the correct email and password
 - If email confirmation is enabled, make sure you've confirmed your email
 - Try registering a new account
@@ -104,6 +107,7 @@ Open your browser and go to `http://localhost:5173`
 ### Issue: Email confirmation link not working
 
 **Solution**:
+
 - For development, disable email confirmation in Supabase settings
 - Check your spam folder
 - Make sure the link hasn't expired (they expire after 24 hours)
@@ -111,6 +115,7 @@ Open your browser and go to `http://localhost:5173`
 ### Issue: "Failed to fetch" error
 
 **Solution**:
+
 - Check that your Supabase project is active and running
 - Verify your `VITE_SUPABASE_URL` is correct
 - Check your internet connection

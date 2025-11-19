@@ -8,8 +8,8 @@ function AppContent() {
 
   if (loading) {
     return (
-      <div className="loading-container">
-        <div className="spinner"></div>
+      <div className="loading-container" aria-busy="true">
+        <div className="spinner" role="status" aria-label="Loading"></div>
         <p>Loading...</p>
       </div>
     )
