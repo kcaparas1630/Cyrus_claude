@@ -5,14 +5,27 @@ import './Dashboard.css'
 export default function Dashboard() {
   const { user, signOut } = useAuth()
   const [loading, setLoading] = useState(false)
+  const [message, setMessage] = useState<{ type: 'error' | 'success'; text: string } | null>(null)
 
   const handleSignOut = async () => {
     setLoading(true)
-    const { error } = await signOut()
-    if (error) {
-      console.error('Error signing out:', error.message)
+    setMessage(null)
+
+    try {
+      const { error } = await signOut()
+      if (error) {
+        setMessage({ type: 'error', text: error.message })
+      } else {
+        setMessage({ type: 'success', text: 'Successfully signed out!' })
+      }
+    } catch (error) {
+      setMessage({
+        type: 'error',
+        text: error instanceof Error ? error.message : 'An error occurred'
+      })
+    } finally {
+      setLoading(false)
     }
-    setLoading(false)
   }
 
   return (
@@ -20,6 +33,12 @@ export default function Dashboard() {
       <div className="dashboard-card">
         <h1>Welcome!</h1>
         <p className="user-email">You are logged in as: <strong>{user?.email}</strong></p>
+
+        {message && (
+          <div className={`message ${message.type}`}>
+            {message.text}
+          </div>
+        )}
 
         <div className="user-info">
           <h2>User Information</h2>
