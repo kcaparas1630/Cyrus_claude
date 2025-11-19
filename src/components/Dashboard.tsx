@@ -5,14 +5,16 @@ import './Dashboard.css'
 export default function Dashboard() {
   const { user, signOut } = useAuth()
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const handleSignOut = async () => {
     setLoading(true)
-    const { error } = await signOut()
-    if (error) {
-      console.error('Error signing out:', error.message)
+    setError(null)
+    const { error: signOutError } = await signOut()
+    if (signOutError) {
+      setError(signOutError.message)
+      setLoading(false)
     }
-    setLoading(false)
   }
 
   return (
@@ -47,7 +49,13 @@ export default function Dashboard() {
           </div>
         </div>
 
-        <button onClick={handleSignOut} className="signout-button" disabled={loading}>
+        {error && (
+          <div className="error-message" style={{ marginTop: '1rem', padding: '0.75rem', backgroundColor: '#ff4444', color: 'white', borderRadius: '6px' }}>
+            {error}
+          </div>
+        )}
+
+        <button onClick={handleSignOut} className="signout-button" disabled={loading} type="button">
           {loading ? 'Signing Out...' : 'Sign Out'}
         </button>
       </div>

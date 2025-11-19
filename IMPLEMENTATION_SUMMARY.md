@@ -176,7 +176,7 @@ Supports all modern browsers:
 
 ## Known Limitations
 
-1. **Email Confirmation**: For development, disable email confirmation in Supabase settings for easier testing
+1. **Email Confirmation**: For development, you may disable email confirmation in Supabase settings for easier testing. **CRITICAL: Re-enable email confirmation before deploying to production** to prevent unauthorized account creation.
 2. **Password Reset**: Not implemented (can be added as future enhancement)
 3. **Social Login**: Not implemented (can be added via Supabase OAuth providers)
 4. **Remember Me**: Not implemented (sessions expire based on Supabase settings)

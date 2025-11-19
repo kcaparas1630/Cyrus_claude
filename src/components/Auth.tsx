@@ -30,8 +30,6 @@ export default function Auth() {
         const { error } = await signIn(trimmedEmail, trimmedPassword)
         if (error) {
           setMessage({ type: 'error', text: error.message })
-        } else {
-          setMessage({ type: 'success', text: 'Successfully logged in!' })
         }
       } else {
         const { error } = await signUp(trimmedEmail, trimmedPassword)
@@ -86,8 +84,11 @@ export default function Auth() {
               onChange={(e) => setPassword(e.target.value)}
               required
               disabled={loading}
-              minLength={6}
+              minLength={8}
             />
+            <small style={{ color: '#888', fontSize: '0.85rem', marginTop: '0.25rem' }}>
+              Minimum 8 characters
+            </small>
           </div>
 
           {message && (

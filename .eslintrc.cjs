@@ -12,7 +12,10 @@ module.exports = {
   rules: {
     'react-refresh/only-export-components': [
       'warn',
-      { allowConstantExport: true, allowExportNames: ['useAuth'] },
+      {
+        allowConstantExport: true,
+        allowExportNames: ['useAuth'] // AuthContext exports useAuth hook alongside AuthProvider component
+      },
     ],
   },
 }
